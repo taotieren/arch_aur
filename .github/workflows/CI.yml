@@ -1,0 +1,43 @@
+name: CI
+on: [push, pull_request]
+#  schedule:
+#  - cron: '* 6 * * *'
+
+jobs:
+  run-build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux
+      options: --privileged
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Arch Linux package
+        uses: taotieren/build-arch-package@master
+        with:
+          BUILDING: multilib-build
+          PKGBUILD: $GITHUB_WORKSPACE/PKGBUILD
+          OUTDIR: $HOME/arch-packages
+          
+      - name: Prepare kicad_arch
+        run: |
+          mkdir -p ./artifact/kicad_arch/
+          #cp -rf $(find $GITHUB_WORKSPACE/ -type f -name "*.sh*") $HOME/arch-packages/
+          #bash $HOME/arch-packages/gen.sh -m
+          cp -rf $(find $HOME/arch-packages -type f -name "*.zst*") ./artifact/kicad_arch/
+
+      - name: Deliver kicad_arch
+        uses: actions/upload-artifact@v2
+        with:
+          name: kicad_arch
+          path: ./artifact/kicad_arch/
+
+      - name: Upload release asset
+        if: github.event == 'release'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.YOURTOKEN }}
+          file: ./artifact/kicad_arch/*
+          tag: ${{ github.ref }}
+          file_glob: true
