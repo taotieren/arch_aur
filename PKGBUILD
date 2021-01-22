@@ -15,7 +15,8 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/rockola/kicad.git'
+	'git+https://gitlab.com/rockola/kicad.git'#commit=ee805e9d
+#https://gitlab.com/rockola/kicad/-/tree/strokefont
 	'kicad-nightly.env'
 )
 sha256sums=(
