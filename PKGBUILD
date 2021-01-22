@@ -16,11 +16,10 @@ optdepends=(
 )
 source=(
 	'git+https://gitlab.com/rockola/kicad.git'
-	'git+https://gitlab.com/kicad/code/kicad-i18n.git'#commit=e89d9a8
 	'kicad-nightly.env'
 )
 sha256sums=(
-	'SKIP' 'SKIP'
+	'SKIP'
 	'fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18'
 )
 
@@ -38,6 +37,8 @@ build()
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-nightly/lib \
 		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
+		-DKICAD_I18N=ON \
+		-DKICAD_I18N_UNIX_STRICT_PATH=ON \
 		-DKICAD_USE_OCE=OFF \
 		-DKICAD_USE_OCC=ON \
 		-DKICAD_SCRIPTING=ON \
@@ -51,16 +52,16 @@ build()
 		-DBUILD_GITHUB_PLUGIN=ON
 	ninja
 
-	cd "$srcdir/kicad-i18n"
-
-	rm -rf build
-	mkdir build
-	cd build
-	cmake .. -G Ninja \
-		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
-		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
-		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly
-	ninja
+#	cd "$srcdir/kicad-i18n"
+#
+#	rm -rf build
+#	mkdir build
+#	cd build
+#	cmake .. -G Ninja \
+#		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
+#		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
+#		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly
+#	ninja
 }
 
 package()
@@ -93,6 +94,6 @@ EOF
 		chmod +x "$pkgdir/usr/bin/$prog-nightly"
 	done
 
-	cd "$srcdir/kicad-i18n/build"
-	DESTDIR="$pkgdir" ninja install
+#	cd "$srcdir/kicad-i18n/build"
+#	DESTDIR="$pkgdir" ninja install
 }
