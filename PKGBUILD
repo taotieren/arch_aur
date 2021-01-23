@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git switch -c test 3d0f810d 
+  git switch -c test ee805e9d 
   mkdir -p build
   cd build
   
