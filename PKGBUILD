@@ -31,7 +31,7 @@ pkgver() {
 build() {
 #  cp -rv *.patch "${srcdir}/${pkgname}"
   cd "${srcdir}/${pkgname}"
-  git switch -c test 08b7610e
+  git switch -c test  95f8fb81
 #git apply *.patch
   mkdir -p build
   cd build
