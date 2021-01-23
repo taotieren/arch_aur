@@ -29,7 +29,10 @@ build() {
   git checkout 3d0f810d 
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_BUILD_TYPE=Release \
+  
+#  -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_BUILD_TYPE=Debug \
+    -DKICAD_STDLIB_LIGHT_DEBUG=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DKICAD_USE_OCE=OFF \
