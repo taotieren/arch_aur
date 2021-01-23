@@ -17,10 +17,11 @@ optdepends=('kicad-library: for footprints and symbols'
 conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
 source=("${pkgname}"'::git+https://gitlab.com/rockola/kicad.git'
-    0001-Remove-SetGrabMouse-and-revert-some-behaviours.patch
+#        kicad.patch
         )
 md5sums=('SKIP'
-         'SKIP')
+#        'SKIP'
+         )
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -28,12 +29,10 @@ pkgver() {
 }
 
 build() {
-  cp -rv *.patch "${srcdir}/${pkgname}"
+#  cp -rv *.patch "${srcdir}/${pkgname}"
   cd "${srcdir}/${pkgname}"
-  git switch -c test 3d0f810d
-  git apply --stat *.patch
-  git apply --check *.patch
-  git apply *.patch
+  git switch -c test 08b7610e
+#git apply *.patch
   mkdir -p build
   cd build
   
