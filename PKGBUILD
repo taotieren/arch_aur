@@ -33,7 +33,7 @@ build() {
   git switch -c test 3d0f810d
   git apply --stat *.patch
   git apply --check *.patch
-  git am --signoff < *.patch
+  git apply *.patch
   mkdir -p build
   cd build
   
