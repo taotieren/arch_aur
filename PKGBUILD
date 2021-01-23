@@ -27,30 +27,52 @@ sha256sums=(
 build()
 {
 	cd "$srcdir/kicad"
+	git checkout ee805e9d
 
 	rm -rf build
 	mkdir build
 	cd build
 	cmake .. -G Ninja \
-		-DCMAKE_BUILD_TYPE=Release \
+#		-DCMAKE_BUILD_TYPE=Release \
+#		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
+#		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
+#		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly \
+#		-DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-nightly/lib \
+#		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
+#		-DKICAD_I18N=ON \
+#		-DKICAD_I18N_UNIX_STRICT_PATH=ON \
+#		-DKICAD_USE_OCE=OFF \
+#		-DKICAD_USE_OCC=ON \
+#		-DKICAD_SCRIPTING=ON \
+#		-DKICAD_SCRIPTING_PYTHON3=ON \
+#		-DKICAD_SCRIPTING_MODULES=ON \
+#		-DKICAD_SCRIPTING_WXPYTHON=ON \
+#		-DKICAD_SCRIPTING_ACTION_MENU=ON \
+#		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
+#		-DKICAD_DATA=/usr/share/kicad-nightly \
+#		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+#		-DBUILD_GITHUB_PLUGIN=ON
+#		
+		-DCMAKE_C_COMPILER_LAUNCHER=ccache \
+		-DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+		-DCMAKE_BUILD_TYPE=Debug \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-nightly \
 		-DCMAKE_INSTALL_DATADIR=/usr/share/kicad-nightly \
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-nightly \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-nightly/lib \
+		-DKICAD_DATA=/usr/share/kicad-nightly \
 		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
-		-DKICAD_I18N=ON \
-		-DKICAD_I18N_UNIX_STRICT_PATH=ON \
+		-DKICAD_STDLIB_LIGHT_DEBUG=ON \
+		-DKICAD_SCRIPTING=ON \
+		-DKICAD_SCRIPTING_MODULES=ON \
+		-DKICAD_SCRIPTING_PYTHON3=ON \
+		-DKICAD_SCRIPTING_WXPYTHON=ON \
+		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
+		-DKICAD_SCRIPTING_ACTION_MENU=ON \
 		-DKICAD_USE_OCE=OFF \
 		-DKICAD_USE_OCC=ON \
-		-DKICAD_SCRIPTING=ON \
-		-DKICAD_SCRIPTING_PYTHON3=ON \
-		-DKICAD_SCRIPTING_MODULES=ON \
-		-DKICAD_SCRIPTING_WXPYTHON=ON \
-		-DKICAD_SCRIPTING_ACTION_MENU=ON \
-		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
-		-DKICAD_DATA=/usr/share/kicad-nightly \
-		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
-		-DBUILD_GITHUB_PLUGIN=ON
+		-DKICAD_SPICE=ON \
+		-DKICAD_BUILD_I18N=ON
 	ninja
 
 #	cd "$srcdir/kicad-i18n"
