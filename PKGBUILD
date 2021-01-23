@@ -7,7 +7,7 @@ pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad-pcb.org/'
 license=('GPL')
-depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
+depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'spice' 'opencascade' 'python-wxpython')
 makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig' 'ninja')
 options=('!strip')
 optdepends=(
@@ -41,6 +41,7 @@ build()
 		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
 		-DKICAD_USE_OCE=OFF \
 		-DKICAD_USE_OCC=ON \
+		-DKICAD_SPICE=ON \
 		-DKICAD_SCRIPTING=ON \
 		-DKICAD_SCRIPTING_PYTHON3=ON \
 		-DKICAD_SCRIPTING_MODULES=ON \
