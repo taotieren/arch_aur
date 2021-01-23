@@ -4,8 +4,8 @@
 pkgname=kicad-test
 _langpack=kicad-i18n-test
 replaces=(${_langpack})
-pkgver=r20303.e10025db64
-pkgrel=2
+pkgver=r20075.2d1d16d7a2
+pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git checkout ee805e9d
+  git checkout 3d0f810d 
   mkdir -p build
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release \
