@@ -47,14 +47,14 @@ build() {
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
     -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON
 
-  make -j32
-
-  cd "${srcdir}/${pkgname}/translation"
-  mkdir -p build
-  cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-
   make
+
+#  cd "${srcdir}/${pkgname}/translation"
+#  mkdir -p build
+#  cd build
+#  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+
+#  make
 }
 
 package() {
