@@ -1,33 +1,34 @@
-pkgbase = kicad-nightly
+pkgbase = kicad-test
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 5.99.0_8541_ee805e9d
+	pkgver = r20303.e10025db64
 	pkgrel = 2
 	url = http://kicad-pcb.org/
+	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = glm
 	makedepends = zlib
 	makedepends = mesa
 	makedepends = boost
 	makedepends = swig
-	makedepends = ninja
 	depends = wxgtk3
 	depends = python
 	depends = boost-libs
 	depends = glew
 	depends = curl
-	depends = glm
 	depends = ngspice
 	depends = opencascade
 	depends = python-wxpython
-	optdepends = kicad-library-nightly: for footprints and symbols
-	optdepends = kicad-library-3d-nightly: for 3d models of components
-	options = !strip
-	source = git+https://gitlab.com/rockola/kicad.git#commit=ee805e9d
-	source = kicad-nightly.env
-	sha256sums = SKIP
-	sha256sums = fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18
+	optdepends = kicad-library: for footprints and symbols
+	optdepends = kicad-library-3d: for 3d models of components
+	provides = kicad
+	conflicts = kicad
+	conflicts = kicad-bzr
+	replaces = kicad-i18n-test
+	source = kicad-test::git+https://gitlab.com/rockola/kicad.git
+	md5sums = SKIP
 
-pkgname = kicad-nightly
+pkgname = kicad-test
 
