@@ -18,7 +18,7 @@ conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
 source=(
 # "${pkgname}"'::git+https://gitlab.com/rockola/kicad.git'
-        "${pkgname}"::''https://gitlab.com/kicad/code/kicad.git'
+        "${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
 #        kicad.patch
         )
 md5sums=('SKIP'
