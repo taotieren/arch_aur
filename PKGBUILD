@@ -25,10 +25,10 @@ md5sums=('SKIP'
 #        'SKIP'
          )
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#  cd "${srcdir}/${pkgname}"
+#  printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
+#}
 
 build() {
 #  cp -rv *.patch "${srcdir}/${pkgname}"
