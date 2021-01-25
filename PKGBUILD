@@ -15,7 +15,7 @@ optdepends=('kicad-library: for footprints and symbols'
 conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
-source=("${pkgname}::git+https://gitlab.com/rockola/kicad.git")
+source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git')
 sha256sum=('SKIP')
 
 pkgver() {
