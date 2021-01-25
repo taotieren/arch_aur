@@ -62,3 +62,5 @@ package() {
   cd build
   make DESTDIR="${pkgdir}" install
 }
+md5sums=('SKIP')
+md5sums=('SKIP')
