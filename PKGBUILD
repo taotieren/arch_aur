@@ -25,8 +25,8 @@ pkgver() {
 
 build() {
          cd "${srcdir}/${pkgname}"
-         git switch -c test 49eb23bf 
-#         git switch -c test 61ecfb1d 
+#         git switch -c test 49eb23bf 
+         git switch -c test 61ecfb1d 
          mkdir -p build
          cd build
   
@@ -62,5 +62,4 @@ package() {
   cd build
   make DESTDIR="${pkgdir}" install
 }
-md5sums=('SKIP')
 md5sums=('SKIP')
