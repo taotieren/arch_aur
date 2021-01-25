@@ -16,8 +16,8 @@ optdepends=('kicad-library: for footprints and symbols'
             'kicad-library-3d: for 3d models of components')
 conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
-source=(
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
+source=(
         "${pkgname}"::'https://gitlab.com/rockola/kicad.git'
         )
 md5sums=('SKIP'
