@@ -14,11 +14,10 @@ depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'ngspice' 'opencascade' 'p
 makedepends=('git' 'cmake' 'glm' 'zlib' 'mesa' 'boost' 'swig')
 optdepends=('kicad-library: for footprints and symbols'
             'kicad-library-3d: for 3d models of components')
-conflicts=('kicad' 'kicad-bzr')
+conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
-source=(
-        "${pkgname}"::'https://gitlab.com/rockola/kicad.git'
+source=("${pkgname}"::'https://gitlab.com/rockola/kicad.git'
         )
 md5sums=('SKIP'
          )
@@ -29,7 +28,7 @@ md5sums=('SKIP'
 #}
 
 build() {
-# cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
 #git switch -c test 61ecfb1d
   git switch -c test 49eb23bf 
   mkdir -p build
