@@ -16,19 +16,21 @@ optdepends=('kicad-library: for footprints and symbols'
             'kicad-library-3d: for 3d models of components')
 conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
-source=("${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
+source=(
+#"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
+        "${pkgname}"::'https://gitlab.com/rockola/kicad.git'
         )
 md5sums=('SKIP'
          )
 
-#pkgver() {
-#  cd "${srcdir}/${pkgname}"
-#  printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/${pkgname}"
-#  git switch -c test  95f8fb81
+  git switch -c test 61ecfb1d
   mkdir -p build
   cd build
   
