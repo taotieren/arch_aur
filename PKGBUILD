@@ -30,7 +30,8 @@ md5sums=('SKIP'
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git switch -c test 61ecfb1d
+#git switch -c test 61ecfb1d
+  git switch -c test 49eb23bf 
   mkdir -p build
   cd build
   
