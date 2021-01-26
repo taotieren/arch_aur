@@ -1,0 +1,44 @@
+name: CI
+on: [push, pull_request]
+#  schedule:
+#  - cron: '* 6 * * *'
+
+jobs:
+  run-build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux
+      options: --privileged
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Arch Linux package
+        uses: taotieren/build-arch-package@archbuild
+        with:
+          BUILDING: multilib-build
+          PKGBUILD: $GITHUB_WORKSPACE/PKGBUILD
+          DEPENDS: darling-dkms-0.1.20200331.testing-1-x86_64.pkg.tar.zst
+          OUTDIR: $HOME/arch-packages
+          
+      - name: Prepare darling-bin
+        run: |
+          mkdir -pv ./artifact/darling-bin/
+          #cp -rf $(find $GITHUB_WORKSPACE/ -type f -name "*.sh*") $HOME/arch-packages/
+          #bash $HOME/arch-packages/gen.sh -m
+          cp -rfv $(find $HOME/arch-packages -type f -name "*.zst*") ./artifact/darling-bin/
+
+      - name: Deliver darling-bin
+        uses: actions/upload-artifact@v2
+        with:
+          name: darling-bin
+          path: ./artifact/darling-bin/
+
+      - name: Upload release asset
+        if: github.event == 'release'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.YOURTOKEN }}
+          file: ./artifact/darling-bin/*
+          tag: ${{ github.ref }}
+          file_glob: true
