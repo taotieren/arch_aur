@@ -1,0 +1,35 @@
+post_install() {
+
+	MODNAME="darling-mach"
+	MODVER="0.1"
+
+	echo ">>> DKMS: Module add, build, and install"
+
+	line=$(dkms status -m $MODNAME)
+		dkms add -m $MODNAME -v $MODVER
+	fi
+
+	dkms build -m $MODNAME -v $MODVER
+	dkms install -m $MODNAME -v $MODVER
+
+	depmod -a
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	MODNAME="darling-mach"
+
+	echo ">>> DKMS: Module uninstall"
+
+	line=$(dkms status -m $MODNAME)
+		version=$(echo "$line" | sed "s/$MODNAME,\([^,]*\)[,:].*/\1/;t;d")
+		dkms remove -m $MODNAME -v $version --all
+	fi
+
+	depmod -a
+
+}
