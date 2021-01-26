@@ -25,12 +25,12 @@ jobs:
           mkdir -pv ./artifact/darling-dkms/
           #cp -rf $(find $GITHUB_WORKSPACE/ -type f -name "*.sh*") $HOME/arch-packages/
           #bash $HOME/arch-packages/gen.sh -m
-          cp -rfv $(find $HOME/arch-packages -type f -name "*.zst*") ./artifact/darling_arch/
+          cp -rfv $(find $HOME/arch-packages -type f -name "*.zst*") ./artifact/darling-dkms/
 
       - name: Deliver darling-dkms
         uses: actions/upload-artifact@v2
         with:
-          name: darling_arch
+          name: darling-dkms
           path: ./artifact/darling-dkms/
 
       - name: Upload release asset
