@@ -18,7 +18,7 @@ jobs:
         with:
           BUILDING: extra-x86_64-build
           PKGBUILD: $GITHUB_WORKSPACE/PKGBUILD
-          DEPENDS: darling-dkms-0.1.20200331.testing-1-x86_64.pkg.tar.zst arm-linux-gnueabihf-glibc-2.31-1-any.pkg.tar.zst
+          DEPENDS: *.pkg.tar.zst 
           OUTDIR: $HOME/arch-packages
           
       - name: Prepare darling-bin
