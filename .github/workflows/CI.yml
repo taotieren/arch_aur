@@ -16,7 +16,7 @@ jobs:
       - name: Build Arch Linux package
         uses: taotieren/build-arch-package@master
         with:
-          BUILDING: multilib-build
+          BUILDING: extra-x86_64-build
           PKGBUILD: $GITHUB_WORKSPACE/PKGBUILD
           OUTDIR: $HOME/arch-packages
           
