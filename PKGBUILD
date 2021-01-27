@@ -3,7 +3,7 @@
 
 _gitname=darling
 pkgbase=$_gitname
-pkgname=('darling' 'darling-mach-dkms')
+pkgname=('darling-dkms-git')
 pkgver=r3131.fa5348c8a
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux (Stable)"
@@ -299,20 +299,20 @@ build() {
     make lkm 
 }
 
-package_darling() {
-    install=darling.install
-    depends=('darling-mach-dkms')
-    conflicts=('darling')
-    provides=('darling')
+#package_darling() {
+#    install=darling.install
+#    depends=('darling-dkms-git')
+#    conflicts=('darling')
+#    provides=('darling')
+#
+#    cd "$srcdir/$_gitname/build"
+#    make DESTDIR="$pkgdir" install 
+#}
 
-    cd "$srcdir/$_gitname/build"
-    make DESTDIR="$pkgdir" install 
-}
-
-package_darling-mach-dkms() {
+package_darling-dkms-git() {
     depends=('dkms')
-    conflicts=('darling-mach-dkms')
-    provides=('darling-mach-dkms')
+    conflicts=('darling-dkms-git')
+    provides=('darling-dkms-git')
     optdepends=('linux-headers: build modules against the Arch kernel'
                 'linux-lts-headers: build modules against the LTS kernel'
                 'linux-zen-headers: build modules against the ZEN kernel'
