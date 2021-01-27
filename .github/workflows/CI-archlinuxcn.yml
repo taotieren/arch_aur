@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build Arch Linux package
-        uses: taotieren/build-arch-package@archbuild
+        uses: taotieren/build-arch-package@archlinuxcn
         with:
           BUILDING: archlinuxcn-x86_64-build
           PKGBUILD: $GITHUB_WORKSPACE/PKGBUILD
