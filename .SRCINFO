@@ -27,7 +27,7 @@ pkgbase = kicad-test
 	conflicts = kicad
 	conflicts = kicad-bzr
 	conflicts = kicad-git
-	source = kicad-test::git+https://gitlab.com/rockola/kicad.git#6ee90872
+	source = kicad-test::git+https://gitlab.com/rockola/kicad.git
 	md5sums = SKIP
 
 pkgname = kicad-test
