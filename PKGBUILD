@@ -2,7 +2,7 @@
 # Contributer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-test
-pkgver=r20075.2d1d16d7a2
+pkgver=r20076.37518b74e7
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ build() {
 #         git switch -c test 49eb23bf 
 #         git switch -c test 61ecfb1d 
 #         git switch -c test 68312fb6 
-         git switch -c test 6ee90872
+         git switch -c test 1733a23a 
          mkdir -p build
          cd build
   
