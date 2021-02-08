@@ -15,7 +15,7 @@ optdepends=('kicad-library: for footprints and symbols'
 conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
-source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git')
+source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git#6ee90872')
 sha256sum=('SKIP')
 
 pkgver() {
@@ -27,7 +27,7 @@ build() {
          cd "${srcdir}/${pkgname}"
 #         git switch -c test 49eb23bf 
 #         git switch -c test 61ecfb1d 
-         git switch -c test 68312fb6 
+#         git switch -c test 68312fb6 
          mkdir -p build
          cd build
   
