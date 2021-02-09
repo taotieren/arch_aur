@@ -8,7 +8,7 @@ pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'ngspice' 'opencascade' 'python-wxpython' 'doxygen')
+depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'ngspice' 'opencascade' 'python-wxpython' 'doxygen' 'freetype2')
 makedepends=('git' 'cmake' 'glm' 'zlib' 'mesa' 'boost' 'swig')
 optdepends=('kicad-library: for footprints and symbols'
             'kicad-library-3d: for 3d models of components')
