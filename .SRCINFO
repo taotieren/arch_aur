@@ -1,6 +1,6 @@
 pkgbase = kicad-test
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = r20076.37518b74e7
+	pkgver = 5.99.0.r10020.gd0d6352a25
 	pkgrel = 1
 	url = http://kicad-pcb.org/
 	arch = i686
@@ -15,19 +15,24 @@ pkgbase = kicad-test
 	makedepends = swig
 	depends = wxgtk3
 	depends = python
+	depends = desktop-file-utils
 	depends = boost-libs
 	depends = glew
 	depends = curl
 	depends = ngspice
 	depends = opencascade
 	depends = python-wxpython
+	depends = doxygen
+	depends = freetype2
+	depends = ngspice>=27
+	depends = swig
 	optdepends = kicad-library: for footprints and symbols
 	optdepends = kicad-library-3d: for 3d models of components
 	provides = kicad
 	conflicts = kicad
 	conflicts = kicad-bzr
 	conflicts = kicad-git
-	source = kicad-test::git+https://gitlab.com/rockola/kicad.git
+	source = kicad-test::git+https://gitlab.com/kicad/code/kicad.git
 	md5sums = SKIP
 
 pkgname = kicad-test

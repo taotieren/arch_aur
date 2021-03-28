@@ -2,7 +2,7 @@
 # Contributer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-test
-pkgver=r20076.37518b74e7
+pkgver=5.99.0.r10020.gd0d6352a25
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
@@ -22,6 +22,10 @@ sha256sum=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    sed -i "s|if( !m_locale->Init( m_language_id ) )|if( !m_locale->Init( m_language_id, wxLOCALE_DONT_LOAD_DEFAULT ) )|g" "${srcdir}/${pkgname}/common/pgm_base.cpp"
 }
 
 build() {
