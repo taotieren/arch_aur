@@ -34,6 +34,8 @@ pkgbase = kicad-test
 	conflicts = kicad-bzr
 	conflicts = kicad-git
 	source = kicad-test::git+https://gitlab.com/kicad/code/kicad.git
+	source = kicad-test.env
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = kicad-test

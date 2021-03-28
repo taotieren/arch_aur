@@ -15,9 +15,11 @@ optdepends=('kicad-library: for footprints and symbols'
 conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
-source=("${pkgname}"::'git+https://gitlab.com/kicad/code/kicad.git')
+source=("${pkgname}"::'git+https://gitlab.com/kicad/code/kicad.git'
+    "kicad-test.env")
 #source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git')
-md5sums=('SKIP')
+md5sums=('SKIP'
+        'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -69,4 +71,29 @@ package() {
   cd "${srcdir}/${pkgname}/build"
 #   make DESTDIR="${pkgdir}" install
 	DESTDIR="$pkgdir" ninja install
+	
+	mkdir -p "$pkgdir/usr/share/applications"
+	for prog in bitmap2component eeschema gerbview kicad pcbcalculator pcbnew; do
+		sed -i \
+			-e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1-test\2/g' \
+			-e 's/^Icon=\(.*\)$/Icon=\1-test/g' \
+			-e 's/^Name=\(.*\)$/Name=\1 test/g' \
+			"$pkgdir/usr/share/kicad-test/applications/$prog.desktop"
+		ln -sv "../kicad-test/applications/$prog.desktop" \
+			"$pkgdir/usr/share/applications/${prog}-test.desktop"
+	done
+
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/share/kicad-test"
+	cp kicad-test.env "$pkgdir/usr/share/kicad-test/kicad-test.env"
+
+	mkdir -p "$pkgdir/usr/bin"
+	(cd "$pkgdir/usr/lib/kicad-test/bin" && ls | grep -v '\.kiface') | while read prog; do
+		cat > "$pkgdir/usr/bin/$prog-test" <<EOF
+#!/bin/sh
+. /usr/share/kicad-test/kicad-test.env
+exec /usr/lib/kicad-test/bin/$prog
+EOF
+		chmod +x "$pkgdir/usr/bin/$prog-test"
+	done
 }
