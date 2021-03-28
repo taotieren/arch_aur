@@ -13,6 +13,7 @@ pkgbase = kicad-test
 	makedepends = mesa
 	makedepends = boost
 	makedepends = swig
+	makedepends = ninja
 	depends = wxgtk3
 	depends = python
 	depends = desktop-file-utils

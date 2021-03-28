@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
 depends=('wxgtk3' 'python' 'desktop-file-utils' 'boost-libs' 'glew' 'curl' 'ngspice' 'opencascade' 'python-wxpython' 'doxygen' 'freetype2' 'ngspice>=27' 'swig' )
-makedepends=('git' 'cmake' 'glm' 'zlib' 'mesa' 'boost' 'swig')
+makedepends=('git' 'cmake' 'glm' 'zlib' 'mesa' 'boost' 'swig' 'ninja')
 optdepends=('kicad-library: for footprints and symbols'
             'kicad-library-3d: for 3d models of components')
 conflicts=('kicad' 'kicad-bzr' 'kicad-git')
@@ -38,7 +38,7 @@ build() {
          cd build
   
 #  -DCMAKE_BUILD_TYPE=Release
-         cmake .. -DCMAKE_BUILD_TYPE=Debug \
+         cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Debug \
          -DKICAD_STDLIB_LIGHT_DEBUG=ON \
          -DCMAKE_INSTALL_PREFIX=/usr \
          -DCMAKE_INSTALL_LIBDIR=lib \
@@ -53,8 +53,9 @@ build() {
          -DKICAD_SCRIPTING_WXPYTHON=ON \
          -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
          -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON
-
-         make
+            
+#         make
+         ninja
 
 #  cd "${srcdir}/${pkgname}/translation"
 #  mkdir -p build
@@ -67,6 +68,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   cd build
-  make DESTDIR="${pkgdir}" install
+#   make DESTDIR="${pkgdir}" install
+  ninja DESTDIR="${pkgdir}" install
 }
 md5sums=('SKIP')
