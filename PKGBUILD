@@ -2,7 +2,7 @@
 # Contributer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-test
-pkgver=5.99.0.r10020.gd0d6352a25
+pkgver=5.99.0.r10023.g8a8167ff0a
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ provides=('kicad')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
 source=("${pkgname}"::'git+https://gitlab.com/kicad/code/kicad.git')
 #source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git')
-sha256sum=('SKIP')
+md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -66,9 +66,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  cd build
+  cd "${srcdir}/${pkgname}/build"
 #   make DESTDIR="${pkgdir}" install
-  ninja DESTDIR="${pkgdir}" install
+	DESTDIR="$pkgdir" ninja install
 }
-md5sums=('SKIP')
