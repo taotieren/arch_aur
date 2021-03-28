@@ -8,19 +8,20 @@ pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'ngspice' 'opencascade' 'python-wxpython' 'doxygen' 'freetype2')
+depends=('wxgtk3' 'python' 'desktop-file-utils' 'boost-libs' 'glew' 'curl' 'ngspice' 'opencascade' 'python-wxpython' 'doxygen' 'freetype2' 'ngspice>=27' 'swig' )
 makedepends=('git' 'cmake' 'glm' 'zlib' 'mesa' 'boost' 'swig')
 optdepends=('kicad-library: for footprints and symbols'
             'kicad-library-3d: for 3d models of components')
 conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
-source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git')
+source=("${pkgname}"::'git+https://gitlab.com/kicad/code/kicad.gitt')
+#source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git')
 sha256sum=('SKIP')
 
 pkgver() {
-         cd "${srcdir}/${pkgname}"
-         printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -28,7 +29,7 @@ build() {
 #         git switch -c test 49eb23bf 
 #         git switch -c test 61ecfb1d 
 #         git switch -c test 68312fb6 
-         git switch -c test 392fb298
+#         git switch -c test 392fb298
          mkdir -p build
          cd build
   
