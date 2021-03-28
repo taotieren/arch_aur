@@ -41,20 +41,24 @@ build() {
   
 #  -DCMAKE_BUILD_TYPE=Release
          cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Debug \
-         -DKICAD_STDLIB_LIGHT_DEBUG=ON \
-         -DCMAKE_INSTALL_PREFIX=/usr \
-         -DCMAKE_INSTALL_LIBDIR=lib \
-         -DKICAD_USE_OCE=OFF \
-         -DKICAD_USE_OCC=ON \
-         -DKICAD_BUILD_I18N=ON \
-         -DBUILD_GITHUB_PLUGIN=ON \
-         -DKICAD_SCRIPTING=ON \
-         -DKICAD_SCRIPTING_MODULES=ON \
-         -DKICAD_SCRIPTING_ACTION_MENU=ON \
-         -DKICAD_SCRIPTING_PYTHON3=ON \
-         -DKICAD_SCRIPTING_WXPYTHON=ON \
-         -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
-         -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON
+        -DKICAD_STDLIB_LIGHT_DEBUG=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr/lib/kicad-test \
+        -DCMAKE_INSTALL_DATADIR=/usr/share/kicad-test \
+        -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/kicad-test \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib/kicad-test/lib \
+        -DCMAKE_EXECUTABLE_SUFFIX=-test \
+        -DKICAD_USE_OCE=OFF \
+        -DKICAD_USE_OCC=ON \
+        -DKICAD_BUILD_I18N=ON \
+        -DBUILD_GITHUB_PLUGIN=ON \
+        -DKICAD_SCRIPTING=ON \
+        -DKICAD_SCRIPTING_PYTHON3=ON \
+        -DKICAD_SCRIPTING_MODULES=ON \
+        -DKICAD_SCRIPTING_WXPYTHON=ON \
+        -DKICAD_SCRIPTING_ACTION_MENU=ON \
+        -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
+        -DKICAD_DATA=/usr/share/kicad-nightly \
+        -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
             
 #         make
          ninja
