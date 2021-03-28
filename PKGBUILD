@@ -57,7 +57,7 @@ build() {
         -DKICAD_SCRIPTING_WXPYTHON=ON \
         -DKICAD_SCRIPTING_ACTION_MENU=ON \
         -DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
-        -DKICAD_DATA=/usr/share/kicad-nightly \
+        -DKICAD_DATA=/usr/share/kicad-test \
         -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
             
 #         make
