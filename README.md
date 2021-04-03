@@ -1,1 +1,1 @@
-# kicad_arch
+# AUR GitHub Actions
