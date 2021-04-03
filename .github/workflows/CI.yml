@@ -2,10 +2,32 @@ name: CI
 on: 
   push:
     branches:
-      - *
+      - main
+      - dcda
+      - dcda-git
+      - edrawman-cn
+      - edrawproject-cn
+      - mark-mind
+      - serialtool
+      - serialtool-git
+      - proj2cmake-git
+      - mindmaster_cn
+      - mindmater_en
+      - qserial
   pull_request:
     branches:
-      - *
+      - main
+      - dcda
+      - dcda-git
+      - edrawman-cn
+      - edrawproject-cn
+      - mark-mind
+      - serialtool
+      - serialtool-git
+      - proj2cmake-git
+      - mindmaster_cn
+      - mindmater_en
+      - qserial
   schedule:
     - cron: '* 6 * * *'
 
