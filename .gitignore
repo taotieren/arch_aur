@@ -1,2 +1,6 @@
 /kicad/
 /kicad-i18n/
+kicad-test/
+src/
+pkg/
+
