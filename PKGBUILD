@@ -2,7 +2,7 @@
 # Contributer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-test
-pkgver=5.99.0.r10023.g8a8167ff0a
+pkgver=5.99.0.r10107.ga8896ebd73
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ optdepends=('kicad-library: for footprints and symbols'
             'kicad-library-3d: for 3d models of components')
 conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
+#options=('debug' 'strip')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
 source=("${pkgname}"::'git+https://gitlab.com/kicad/code/kicad.git'
     "kicad-test.env")
@@ -26,9 +27,9 @@ pkgver() {
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    sed -i "s|if( !m_locale->Init( m_language_id ) )|if( !m_locale->Init( m_language_id, wxLOCALE_DONT_LOAD_DEFAULT ) )|g" "${srcdir}/${pkgname}/common/pgm_base.cpp"
-}
+#prepare() {
+#    sed -i "s|if( !m_locale->Init( m_language_id ) )|if( !m_locale->Init( m_language_id, wxLOCALE_DONT_LOAD_DEFAULT ) )|g" "${srcdir}/${pkgname}/common/pgm_base.cpp"
+#}
 
 build() {
          cd "${srcdir}/${pkgname}"
