@@ -1,6 +1,6 @@
 pkgbase = kicad-test
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 5.99.0.r10034.g38c849bde7
+	pkgver = 5.99.0.r10107.ga8896ebd73
 	pkgrel = 1
 	url = http://kicad-pcb.org/
 	arch = i686
