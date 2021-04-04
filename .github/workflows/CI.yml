@@ -2,7 +2,7 @@ name: CI
 on: 
   push:
     branches:
-      - kicad-git
+      - kicad-test
       - dcda
       - dcda-git
       - edrawman-cn
@@ -16,7 +16,7 @@ on:
       - qserial
   pull_request:
     branches:
-      - kicad-git
+      - kicad-test
       - dcda
       - dcda-git
       - edrawman-cn
