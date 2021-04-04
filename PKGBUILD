@@ -16,7 +16,8 @@ conflicts=('kicad' 'kicad-bzr' 'kicad-git')
 provides=('kicad')
 #options=('debug' 'strip')
 #"${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
-source=("${pkgname}"::'git+https://gitlab.com/kicad/code/kicad.git'
+source=(#"${pkgname}"::'git+https://gitlab.com/kicad/code/kicad.git'
+    "${pkgname}"::'https://gitlab.com/kicad/code/kicad.git'
     "kicad-test.env")
 #source=("${pkgname}"::'git+https://gitlab.com/rockola/kicad.git')
 md5sums=('SKIP'
@@ -37,6 +38,8 @@ build() {
 #         git switch -c test 61ecfb1d 
 #         git switch -c test 68312fb6 
 #         git switch -c test 392fb298
+        git switch -c test 40cb6a32
+
          mkdir -p build
          cd build
   
