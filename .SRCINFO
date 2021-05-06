@@ -1,0 +1,19 @@
+pkgbase = ksa-linux
+	pkgdesc = Kanxue Security Access
+	pkgver = 0.80
+	pkgrel = 1
+	url = https://bbs.pediy.com/thread-252417.htm
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = unknow
+	depends = unzip
+	conflicts = ksa-linux
+	replaces = ksa-linux
+	options = !strip
+	source = KSA_0.80_linux.zip
+	sha256sums = b4cafff1b7ee02ec404ca784d8605d4d61f7fdc4551baebb56cbaa08770359ce
+
+pkgname = ksa-linux
+
